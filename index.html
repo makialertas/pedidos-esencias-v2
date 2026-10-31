@@ -14,10 +14,13 @@
 </head>
 <body class="min-h-screen">
   <div class="max-w-5xl mx-auto p-4">
+    <!-- Header -->
     <header class="bg-violet-700 text-white p-4 rounded-lg mb-6 flex justify-between items-center shadow">
       <h1 class="text-2xl font-bold">Sistema de Pedidos Salem</h1>
       <button id="admin-btn" class="text-sm bg-white text-violet-700 px-4 py-2 rounded hover:bg-gray-100 font-medium">Modo Admin</button>
     </header>
+
+    <!-- Client View -->
     <div id="client-view">
       <div class="flex border-b mb-6 overflow-x-auto">
         <button id="tab-pedido" class="px-6 py-3 tab-active whitespace-nowrap">Hacer Pedido</button>
@@ -25,32 +28,55 @@
         <button id="tab-historial" class="px-6 py-3 text-gray-500 whitespace-nowrap">Historial</button>
         <button id="tab-importar" class="px-6 py-3 text-gray-500 whitespace-nowrap">Importar Artículos</button>
       </div>
+
       <div id="content-pedido" class="tab-content">
         <div id="articles-container" class="space-y-6 mb-8"></div>
         <div class="bg-white p-6 rounded-lg shadow mb-6">
           <h2 class="text-xl font-semibold mb-4">Tu Pedido</h2>
           <div id="order-detailed" class="mb-6 text-sm space-y-1"></div>
-          <h3 class="font-medium mb-2 text-violet-700">Resumen por Artículo</h3>
+          <h3 class="font-medium mb-2 text-indigo-700">Resumen por Artículo</h3>
           <div id="order-summary" class="text-sm font-medium space-y-1"></div>
         </div>
         <button id="btn-send" class="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 shadow cursor-pointer">
           Generar PDF y Enviar por WhatsApp
         </button>
+          Generar PDF y Enviar por WhatsApp
+        </button>
       </div>
+
       <div id="content-datos" class="tab-content hidden">
         <form id="client-form" class="bg-white p-6 rounded-lg shadow space-y-4">
           <h2 class="text-xl font-semibold">Datos del Cliente (se guardan una sola vez)</h2>
-          <div><label class="block text-sm font-medium">Razón Social *</label><input type="text" id="razonSocial" class="mt-1 block w-full border rounded-md p-3" required></div>
-          <div><label class="block text-sm font-medium">Dirección *</label><input type="text" id="direccion" class="mt-1 block w-full border rounded-md p-3" required></div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div><label class="block text-sm font-medium">Localidad *</label><input type="text" id="localidad" class="mt-1 block w-full border rounded-md p-3" required></div>
-            <div><label class="block text-sm font-medium">Provincia *</label><input type="text" id="provincia" class="mt-1 block w-full border rounded-md p-3" required></div>
+          <div>
+            <label class="block text-sm font-medium">Razón Social *</label>
+            <input type="text" id="razonSocial" class="mt-1 block w-full border rounded-md p-3" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Dirección *</label>
+            <input type="text" id="direccion" class="mt-1 block w-full border rounded-md p-3" required>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div><label class="block text-sm font-medium">Código Postal *</label><input type="text" id="codigoPostal" class="mt-1 block w-full border rounded-md p-3" required></div>
-            <div><label class="block text-sm font-medium">CUIT *</label><input type="text" id="cuit" class="mt-1 block w-full border rounded-md p-3" required></div>
+            <div>
+              <label class="block text-sm font-medium">Localidad *</label>
+              <input type="text" id="localidad" class="mt-1 block w-full border rounded-md p-3" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium">Provincia *</label>
+              <input type="text" id="provincia" class="mt-1 block w-full border rounded-md p-3" required>
+            </div>
           </div>
-          <div><label class="block text-sm font-medium">Condición IVA *</label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium">Código Postal *</label>
+              <input type="text" id="codigoPostal" class="mt-1 block w-full border rounded-md p-3" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium">CUIT *</label>
+              <input type="text" id="cuit" class="mt-1 block w-full border rounded-md p-3" required>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Condición IVA *</label>
             <select id="iva" class="mt-1 block w-full border rounded-md p-3" required>
               <option value="">Seleccionar</option>
               <option value="Monotributo">Monotributo</option>
@@ -60,22 +86,37 @@
               <option value="No Responsable">No Responsable</option>
             </select>
           </div>
-          <div><label class="block text-sm font-medium">Transporte</label><input type="text" id="transporte" class="mt-1 block w-full border rounded-md p-3" placeholder="Opcional"></div>
+          <div>
+            <label class="block text-sm font-medium">Transporte</label>
+            <input type="text" id="transporte" class="mt-1 block w-full border rounded-md p-3" placeholder="Opcional">
+          </div>
           <button type="submit" class="bg-violet-700 text-white px-8 py-3 rounded-lg hover:bg-violet-800 font-medium">Guardar Datos</button>
         </form>
       </div>
-      <div id="content-historial" class="tab-content hidden"><div id="orders-history" class="space-y-4"></div></div>
+
+      <div id="content-historial" class="tab-content hidden">
+        <div id="orders-history" class="space-y-4"></div>
+      </div>
+
       <div id="content-importar" class="tab-content hidden">
         <div class="bg-white p-6 rounded-lg shadow">
           <h2 class="text-xl font-semibold mb-4">Importar Artículos</h2>
-          <p class="mb-4 text-gray-700">Si el administrador te envió un archivo JSON, seleccionálo aquí:</p>
+          <p class="mb-4 text-gray-700">Si el administrador te envió un archivo JSON con los artículos y aromas actualizados, seguí estos pasos:</p>
+          <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+            <li>Hacé clic en el botón de abajo y seleccioná el archivo <strong>.json</strong> que te enviaron.</li>
+            <li>Esperá el mensaje de confirmación.</li>
+            <li>Volvé a la solapa <strong>Hacer Pedido</strong> para ver los artículos actualizados.</li>
+          </ol>
           <label class="inline-block bg-violet-700 text-white px-6 py-3 rounded-lg cursor-pointer hover:bg-violet-800 font-medium">
             Seleccionar archivo JSON
             <input type="file" id="import-file" accept=".json" class="hidden">
           </label>
+          <p class="text-sm text-gray-500 mt-4">Los datos personales y el historial de pedidos no se borran al importar.</p>
         </div>
       </div>
     </div>
+
+    <!-- Admin View -->
     <div id="admin-view" class="hidden">
       <div id="admin-login" class="max-w-md mx-auto mt-10 bg-white p-8 rounded-lg shadow">
         <h2 class="text-2xl font-bold mb-6 text-center">Acceso Administrador</h2>
@@ -84,111 +125,210 @@
         <p id="login-error" class="text-red-500 text-sm mt-2 text-center hidden">Contraseña incorrecta</p>
         <p class="text-xs text-gray-500 mt-4 text-center">Contraseña inicial: admin123</p>
       </div>
+
       <div id="admin-panel" class="hidden">
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-2xl font-bold">Panel de Administración</h2>
           <button id="btn-exit-admin" class="text-sm bg-gray-200 px-4 py-2 rounded">Salir de Admin</button>
         </div>
+
         <div class="bg-white p-6 rounded-lg shadow mb-6">
           <h3 class="text-lg font-semibold mb-4">Configuración</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div><label class="block text-sm font-medium">WhatsApp (solo números, con código de país)</label><input type="text" id="whatsapp-number" class="border p-3 rounded w-full mt-1"></div>
-            <div><label class="block text-sm font-medium">Nueva Contraseña</label><input type="password" id="new-password" class="border p-3 rounded w-full mt-1"></div>
+            <div>
+              <label class="block text-sm font-medium">Número de WhatsApp (con código de país, sin +)</label>
+              <input type="text" id="whatsapp-number" class="border p-3 rounded w-full mt-1" placeholder="54911XXXXXXXX">
+            </div>
+            <div>
+              <label class="block text-sm font-medium">Cambiar Contraseña</label>
+              <input type="password" id="new-password" class="border p-3 rounded w-full mt-1" placeholder="Nueva clave">
+            </div>
           </div>
-          <button id="btn-save-settings" class="mt-4 bg-green-600 text-white px-6 py-2 rounded">Guardar</button>
+          <button id="btn-save-settings" class="mt-4 bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Guardar Configuración</button>
         </div>
+
         <div class="bg-white p-6 rounded-lg shadow mb-6">
           <div class="flex justify-between items-center mb-4">
-            <h3 class="text-lg font-semibold">Artículos</h3>
-            <button id="btn-new-article" class="bg-violet-700 text-white px-4 py-2 rounded">+ Nuevo</button>
+            <h3 class="text-lg font-semibold">Artículos y Aromas</h3>
+            <button id="btn-new-article" class="bg-violet-700 text-white px-4 py-2 rounded">+ Nuevo Artículo</button>
           </div>
           <div id="articles-list" class="space-y-4"></div>
         </div>
+
         <div class="bg-white p-6 rounded-lg shadow">
-          <button id="btn-export" class="bg-blue-600 text-white px-4 py-2 rounded">Exportar JSON</button>
+          <h3 class="text-lg font-semibold mb-4">Backup / Compartir Artículos</h3>
+          <div class="flex flex-wrap gap-4">
+            <button id="btn-export" class="bg-blue-600 text-white px-4 py-2 rounded">Exportar Artículos (JSON)</button>
+            <label class="bg-gray-600 text-white px-4 py-2 rounded cursor-pointer">
+              Importar Artículos
+              <input type="file" id="admin-import" accept=".json" class="hidden">
+            </label>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Exportá el JSON y mandáselo a tus clientes para que lo importen desde la solapa “Importar Artículos”.</p>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Article Modal -->
   <div id="article-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-    <div class="bg-white p-6 rounded-lg w-full max-w-lg">
+    <div class="bg-white p-6 rounded-lg w-full max-w-lg max-h-[90vh] overflow-y-auto">
       <h3 id="modal-title" class="text-xl font-bold mb-4">Artículo</h3>
-      <input type="text" id="article-name" class="w-full border p-3 rounded mb-4" placeholder="Nombre">
-      <div id="subarticles-list" class="space-y-2 mb-3"></div>
-      <div class="flex gap-2 mb-4"><input type="text" id="new-sub-name" class="flex-1 border p-3 rounded" placeholder="Aroma"><button id="btn-add-sub" class="bg-violet-100 px-4 rounded">+</button></div>
-      <div class="flex gap-2 justify-end"><button id="btn-cancel-modal" class="px-6 py-2 border rounded">Cancelar</button><button id="btn-save-article" class="bg-violet-700 text-white px-6 py-2 rounded">Guardar</button></div>
+      <div class="mb-4">
+        <label class="block font-medium">Nombre del Artículo</label>
+        <input type="text" id="article-name" class="w-full border p-3 rounded mt-1">
+      </div>
+      <div class="mb-4">
+        <label class="block font-medium mb-2">Aromas / Subartículos</label>
+        <div id="subarticles-list" class="space-y-2 mb-3"></div>
+        <div class="flex gap-2">
+          <input type="text" id="new-sub-name" placeholder="Nuevo aroma (ej: Sándalo)" class="flex-1 border p-3 rounded">
+          <button id="btn-add-sub" class="bg-violet-100 px-4 rounded font-bold">+</button>
+        </div>
+      </div>
+      <div class="flex gap-2 justify-end">
+        <button id="btn-cancel-modal" class="px-6 py-2 border rounded">Cancelar</button>
+        <button id="btn-save-article" class="bg-violet-700 text-white px-6 py-2 rounded">Guardar</button>
+      </div>
     </div>
   </div>
+
   <script>
+    // ========== DATA ==========
     let articles = JSON.parse(localStorage.getItem('articles') || '[]');
     let settings = JSON.parse(localStorage.getItem('settings') || '{}');
     if (!settings.adminPassword) settings.adminPassword = 'admin123';
     if (typeof settings.whatsappNumber === 'undefined') settings.whatsappNumber = '';
     localStorage.setItem('settings', JSON.stringify(settings));
+
     let currentOrder = {};
     let clientData = JSON.parse(localStorage.getItem('clientData') || '{}');
     let orderHistory = JSON.parse(localStorage.getItem('orderHistory') || '[]');
     let tempSubarticles = [];
     let editingId = null;
     let isAdmin = false;
+
     if (articles.length === 0) {
-      articles = [{id: Date.now(), name: "Esencia x 10 ml Salem", subarticles: [{id:1,name:"Alcanfor"},{id:2,name:"Frutilla"},{id:3,name:"Sándalo"},{id:4,name:"Violeta"},{id:5,name:"Lavanda"}]}];
-      localStorage.setItem('articles', JSON.stringify(articles));
+      articles = [{
+        id: Date.now(),
+        name: "Esencia x 10 ml Salem",
+        subarticles: [
+          {id: Date.now()+1, name: "Alcanfor"},
+          {id: Date.now()+2, name: "Frutilla"},
+          {id: Date.now()+3, name: "Sándalo"},
+          {id: Date.now()+4, name: "Violeta"},
+          {id: Date.now()+5, name: "Lavanda"}
+        ]
+      }];
+      saveArticles();
     }
+
     function saveArticles() { localStorage.setItem('articles', JSON.stringify(articles)); }
+    function saveSettings() { localStorage.setItem('settings', JSON.stringify(settings)); }
+    function saveClient() { localStorage.setItem('clientData', JSON.stringify(clientData)); }
+    function saveHistory() { localStorage.setItem('orderHistory', JSON.stringify(orderHistory)); }
+
+    // ========== TABS ==========
     function showTab(tab) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('[id^="tab-"]').forEach(el => { el.classList.remove('tab-active'); el.classList.add('text-gray-500'); });
-      const c = document.getElementById(`content-${tab}`);
-      const b = document.getElementById(`tab-${tab}`);
-      if (c) c.classList.remove('hidden');
-      if (b) { b.classList.add('tab-active'); b.classList.remove('text-gray-500'); }
+      document.querySelectorAll('[id^="tab-"]').forEach(el => {
+        el.classList.remove('tab-active');
+        el.classList.add('text-gray-500');
+      });
+      const content = document.getElementById(`content-${tab}`);
+      const tabBtn = document.getElementById(`tab-${tab}`);
+      if (content) content.classList.remove('hidden');
+      if (tabBtn) {
+        tabBtn.classList.add('tab-active');
+        tabBtn.classList.remove('text-gray-500');
+      }
       if (tab === 'datos') loadClientForm();
       if (tab === 'historial') renderHistory();
     }
+
+    // ========== CLIENT ==========
     function renderArticles() {
       const container = document.getElementById('articles-container');
       if (!container) return;
+      if (articles.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">No hay artículos cargados. Importá el archivo JSON del administrador.</p>';
+        return;
+      }
       container.innerHTML = '';
       articles.forEach(art => {
-        let subs = '';
-        art.subarticles.forEach(sub => {
-          const qty = (currentOrder[art.id] && currentOrder[art.id][sub.id]) || 0;
-          subs += `<div class="flex items-center justify-between bg-gray-50 p-3 rounded"><span class="font-medium">${sub.name}</span><div class="flex items-center gap-2"><button type="button" class="btn-qty w-10 h-10 bg-gray-200 rounded-full font-bold" data-art="${art.id}" data-sub="${sub.id}" data-delta="-1">-</button><input type="number" min="0" value="${qty}" class="qty-input border text-center p-2 rounded qty-field" data-art="${art.id}" data-sub="${sub.id}"><button type="button" class="btn-qty w-10 h-10 bg-gray-200 rounded-full font-bold" data-art="${art.id}" data-sub="${sub.id}" data-delta="1">+</button></div></div>`;
-        });
         const div = document.createElement('div');
         div.className = 'bg-white p-5 rounded-lg shadow';
-        div.innerHTML = `<h3 class="font-bold text-lg mb-4 text-violet-800">${art.name}</h3><div class="space-y-3">${subs}</div>`;
+        let subsHtml = '';
+        art.subarticles.forEach(sub => {
+          const qty = (currentOrder[art.id] && currentOrder[art.id][sub.id]) || 0;
+          subsHtml += `
+            <div class="flex items-center justify-between bg-gray-50 p-3 rounded">
+              <span class="font-medium">${sub.name}</span>
+              <div class="flex items-center gap-2">
+                <button type="button" data-art="${art.id}" data-sub="${sub.id}" data-delta="-1" class="btn-qty w-10 h-10 bg-gray-200 rounded-full font-bold text-lg">-</button>
+                <input type="number" min="0" value="${qty}" data-art="${art.id}" data-sub="${sub.id}" class="qty-input border text-center p-2 rounded font-medium qty-field">
+                <button type="button" data-art="${art.id}" data-sub="${sub.id}" data-delta="1" class="btn-qty w-10 h-10 bg-gray-200 rounded-full font-bold text-lg">+</button>
+              </div>
+            </div>`;
+        });
+        div.innerHTML = `<h3 class="font-bold text-lg mb-4 text-violet-800">${art.name}</h3><div class="space-y-3">${subsHtml}</div>`;
         container.appendChild(div);
       });
       updateOrderView();
     }
+
     function setQty(artId, subId, value) {
       const qty = Math.max(0, parseInt(value) || 0);
       if (!currentOrder[artId]) currentOrder[artId] = {};
-      if (qty === 0) { delete currentOrder[artId][subId]; if (Object.keys(currentOrder[artId]).length === 0) delete currentOrder[artId]; }
-      else currentOrder[artId][subId] = qty;
+      if (qty === 0) {
+        delete currentOrder[artId][subId];
+        if (Object.keys(currentOrder[artId]).length === 0) delete currentOrder[artId];
+      } else {
+        currentOrder[artId][subId] = qty;
+      }
       updateOrderView();
     }
+
     function updateOrderView() {
       const detailedDiv = document.getElementById('order-detailed');
       const summaryDiv = document.getElementById('order-summary');
-      if (!detailedDiv) return;
-      let detailedHtml = ''; let summary = {};
+      const btn = document.getElementById('btn-send');
+      if (!detailedDiv || !summaryDiv || !btn) return;
+
+      let detailedHtml = '';
+      let summary = {};
+      let hasItems = false;
+
       articles.forEach(art => {
         if (currentOrder[art.id]) {
-          let total = 0;
+          const lines = [];
+          let artTotal = 0;
           Object.entries(currentOrder[art.id]).forEach(([subId, qty]) => {
             const sub = art.subarticles.find(s => s.id == subId);
-            if (sub && qty > 0) { detailedHtml += `<div class="py-1 border-b flex justify-between"><span>${art.name} - ${sub.name}</span><strong>${qty}</strong></div>`; total += parseInt(qty); }
+            if (sub && qty > 0) {
+              lines.push(`<div class="py-1 flex justify-between pl-3 border-b border-violet-100"><span>${sub.name}</span><strong>${qty}</strong></div>`);
+              artTotal += parseInt(qty);
+              hasItems = true;
+            }
           });
-          if (total > 0) summary[art.name] = total;
+          if (lines.length) {
+            detailedHtml += `<div class="mb-4"><div class="font-semibold text-violet-800">${art.name}</div>${lines.join('')}</div>`;
+            summary[art.name] = artTotal;
+          }
         }
       });
+
       detailedDiv.innerHTML = detailedHtml || '<p class="text-gray-400 italic">No hay items en el pedido todavía</p>';
-      summaryDiv.innerHTML = Object.entries(summary).map(([n,t]) => `<div class="py-1 flex justify-between bg-violet-50 px-3 rounded"><span>${n}</span><strong>${t}</strong></div>`).join('') || '<p class="text-gray-400 italic">Sin resumen</p>';
+      summaryDiv.innerHTML = Object.entries(summary).map(([name, total]) => 
+        `<div class="py-1 flex justify-between bg-violet-50 px-3 rounded"><span>${name}</span><strong>${total}</strong></div>`
+      ).join('') || '<p class="text-gray-400 italic">Sin resumen</p>';
     }
-    function isClientDataComplete() { return clientData.razonSocial && clientData.direccion && clientData.localidad && clientData.provincia && clientData.codigoPostal && clientData.cuit && clientData.iva; }
+
+    function isClientDataComplete() {
+      return clientData.razonSocial && clientData.direccion && clientData.localidad && 
+             clientData.provincia && clientData.codigoPostal && clientData.cuit && clientData.iva;
+    }
+
     function loadClientForm() {
       document.getElementById('razonSocial').value = clientData.razonSocial || '';
       document.getElementById('direccion').value = clientData.direccion || '';
@@ -199,38 +339,80 @@
       document.getElementById('iva').value = clientData.iva || '';
       document.getElementById('transporte').value = clientData.transporte || '';
     }
+
     function renderHistory() {
-      const c = document.getElementById('orders-history');
-      if (!c) return;
-      if (orderHistory.length === 0) { c.innerHTML = '<p class="text-gray-500 text-center py-8">No hay pedidos</p>'; return; }
-      c.innerHTML = orderHistory.slice().reverse().map(o => `<div class="bg-white p-5 rounded-lg shadow"><div class="flex justify-between"><span>${new Date(o.date).toLocaleString('es-AR')}</span><button onclick="downloadHistoryPDF(${o.id})" class="text-violet-700 text-sm">PDF</button></div><div class="text-sm mt-2">${o.summaryText}</div></div>`).join('');
+      const container = document.getElementById('orders-history');
+      if (!container) return;
+      if (orderHistory.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">No hay pedidos anteriores</p>';
+        return;
+      }
+      container.innerHTML = orderHistory.slice().reverse().map(order => `
+        <div class="bg-white p-5 rounded-lg shadow">
+          <div class="flex justify-between items-center">
+            <span class="font-medium">${new Date(order.date).toLocaleString('es-AR')}</span>
+            <button onclick="downloadHistoryPDF(${order.id})" class="text-violet-700 text-sm font-medium hover:underline">Descargar PDF</button>
+          </div>
+          <div class="text-sm mt-2 text-gray-600">${order.summaryText}</div>
+        </div>
+      `).join('');
     }
+
     async function generateAndSend() {
-      if (!isClientDataComplete()) { alert('Por favor completá tus datos personales primero (solapa Mis Datos)'); showTab('datos'); return; }
-      let detailed = []; let summary = {};
+      if (!isClientDataComplete()) {
+        alert('Por favor completá tus datos personales primero (solapa Mis Datos)');
+        showTab('datos');
+        return;
+      }
+
+      let detailed = [];
+      let summary = {};
       articles.forEach(art => {
         if (currentOrder[art.id]) {
-          let t = 0;
-          Object.entries(currentOrder[art.id]).forEach(([sid,q]) => {
-            const sub = art.subarticles.find(s => s.id == sid);
-            if (sub && q > 0) { detailed.push({article:art.name, sub:sub.name, qty:parseInt(q)}); t += parseInt(q); }
+          let total = 0;
+          Object.entries(currentOrder[art.id]).forEach(([subId, qty]) => {
+            const sub = art.subarticles.find(s => s.id == subId);
+            if (sub && qty > 0) {
+              detailed.push({ article: art.name, sub: sub.name, qty: parseInt(qty) });
+              total += parseInt(qty);
+            }
           });
-          if (t > 0) summary[art.name] = t;
+          if (total > 0) summary[art.name] = total;
         }
       });
-      if (detailed.length === 0) { alert('No hay productos en el pedido. Agregá cantidades primero.'); return; }
-      const orderData = {clientData, detailed, summary};
+
+      if (detailed.length === 0) {
+        alert('No hay productos en el pedido. Agregá cantidades primero.');
+        return;
+      }
+
+      const orderData = { clientData, detailed, summary };
+
       try {
+        // Ensure library is loaded
         if (typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined') {
           alert('Cargando librería de PDF... recargá la página e intentá de nuevo.');
           return;
         }
+
         const pdf = await generatePDF(orderData);
         const filename = `Pedido_Salem_${new Date().toISOString().slice(0,10)}.pdf`;
+
+        // Force download
         pdf.save(filename);
-        const item = {id:Date.now(), date:new Date().toISOString(), orderData, summaryText: Object.entries(summary).map(([k,v])=>`${k}: ${v}`).join(' | ')};
-        orderHistory.push(item); localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+
+        const historyItem = {
+          id: Date.now(),
+          date: new Date().toISOString(),
+          orderData,
+          summaryText: Object.entries(summary).map(([k,v]) => `${k}: ${v}`).join(' | ')
+        };
+        orderHistory.push(historyItem);
+        saveHistory();
+
+        // Short message
         let message = `Pedido de ${clientData.razonSocial || 'cliente'}\n(Adjuntar PDF descargado)`;
+
         const waNumber = (settings.whatsappNumber || '').replace(/\D/g, '');
         if (waNumber) {
           const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
@@ -238,6 +420,7 @@
         } else {
           alert('PDF descargado. Configurá el número de WhatsApp en Admin.');
         }
+
         currentOrder = {};
         renderArticles();
         alert('✅ PDF descargado correctamente.\nSe abrió WhatsApp: solo adjuntá el archivo PDF.');
@@ -246,40 +429,106 @@
         alert('Error al generar el PDF: ' + (err.message || err) + '\n\nRecargá la página e intentá de nuevo.');
       }
     }
+
     async function generatePDF(orderData) {
       const jsPDF = window.jspdf?.jsPDF || window.jsPDF;
-      if (!jsPDF) throw new Error('No se cargó la librería de PDF');
+      if (!jsPDF) {
+        throw new Error('No se cargó la librería de PDF. Recargá la página e intentá de nuevo.');
+      }
       const doc = new jsPDF();
       let y = 15;
-      doc.setFontSize(16); doc.setFont('helvetica','bold');
-      doc.text('NOTA DE PEDIDO - SALEM', 105, y, {align:'center'}); y += 8;
-      doc.setFontSize(9); doc.setFont('helvetica','normal');
-      doc.text('Fecha: ' + new Date().toLocaleString('es-AR'), 105, y, {align:'center'}); y += 10;
-      doc.setDrawColor(124, 58, 237); doc.setLineWidth(0.5); doc.line(15, y, 195, y); y += 6;
-      doc.setFontSize(11); doc.setFont('helvetica','bold');
-      doc.text('DATOS DEL CLIENTE', 20, y); y += 6;
-      doc.setFontSize(9); doc.setFont('helvetica','normal');
-      const c = orderData.clientData || {};
-      doc.text('Razon Social: ' + (c.razonSocial||'-'), 20, y); y += 5;
-      doc.text('Direccion: ' + (c.direccion||'-'), 20, y); y += 5;
-      doc.text('Localidad: ' + (c.localidad||'-') + ' - ' + (c.provincia||'-'), 20, y); y += 5;
-      doc.text('Codigo Postal: ' + (c.codigoPostal||'-'), 20, y); y += 5;
-      doc.text('CUIT: ' + (c.cuit||'-'), 20, y); y += 5;
-      doc.text('Condicion IVA: ' + (c.iva||'-'), 20, y); y += 5;
-      if (c.transporte) { doc.text('Transporte: ' + c.transporte, 20, y); y += 5; }
-      y += 4; doc.line(15, y, 195, y); y += 10;
-      doc.setFontSize(11); doc.setFont('helvetica','bold');
-      doc.text('DETALLE DEL PEDIDO', 20, y); y += 7;
-      doc.setFontSize(9); doc.setFont('helvetica','normal');
-      (orderData.detailed||[]).forEach(i => { if (y>270){doc.addPage(); y=20;} doc.text('- ' + i.article + ' - ' + i.sub + ': ' + i.qty, 25, y); y += 6; });
+
+      // Header with company name
+      doc.setFontSize(16);
+      doc.setFont('helvetica', 'bold');
+      doc.text('NOTA DE PEDIDO - SALEM', 105, y, { align: 'center' });
       y += 8;
-      doc.setFontSize(11); doc.setFont('helvetica','bold');
-      doc.text('RESUMEN POR ARTICULO', 20, y); y += 7;
-      doc.setFontSize(9); doc.setFont('helvetica','normal');
-      Object.entries(orderData.summary||{}).forEach(([n,t]) => { if (y>270){doc.addPage(); y=20;} doc.text('- ' + n + ': ' + t, 25, y); y += 6; });
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`Fecha: ${new Date().toLocaleString('es-AR')}`, 105, y, { align: 'center' });
+      y += 10;
+
+      // Client data in header
+      doc.setDrawColor(124, 58, 237);
+      doc.setLineWidth(0.5);
+      doc.line(15, y, 195, y);
+      y += 6;
+
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.text('DATOS DEL CLIENTE', 20, y);
+      y += 6;
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+
+      const c = orderData.clientData || {};
+      doc.text(`Razón Social: ${c.razonSocial || '-'}`, 20, y); y += 5;
+      doc.text(`Dirección: ${c.direccion || '-'}`, 20, y); y += 5;
+      doc.text(`Localidad: ${c.localidad || '-'} - ${c.provincia || '-'}`, 20, y); y += 5;
+      doc.text(`Código Postal: ${c.codigoPostal || '-'}`, 20, y); y += 5;
+      doc.text(`CUIT: ${c.cuit || '-'}`, 20, y); y += 5;
+      doc.text(`Condición IVA: ${c.iva || '-'}`, 20, y); y += 5;
+      if (c.transporte) {
+        doc.text(`Transporte: ${c.transporte}`, 20, y); y += 5;
+      }
+      y += 4;
+      doc.line(15, y, 195, y);
+      y += 10;
+
+      // Detail grouped by article
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.text('DETALLE DEL PEDIDO', 20, y);
+      y += 8;
+
+      const groups = {};
+      (orderData.detailed || []).forEach(item => {
+        if (!groups[item.article]) groups[item.article] = [];
+        groups[item.article].push(item);
+      });
+      Object.entries(groups).forEach(([article, items]) => {
+        if (y > 265) { doc.addPage(); y = 20; }
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'bold');
+        doc.text(article, 20, y);
+        y += 6;
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'normal');
+        items.forEach(item => {
+          if (y > 275) { doc.addPage(); y = 20; }
+          doc.text(item.sub, 28, y);
+          doc.text(String(item.qty), 185, y, { align: 'right' });
+          y += 5;
+        });
+        y += 4;
+      });
+
+      y += 8;
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.text('RESUMEN POR ARTÍCULO', 20, y);
+      y += 7;
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      Object.entries(orderData.summary || {}).forEach(([name, total]) => {
+        if (y > 270) { doc.addPage(); y = 20; }
+        doc.text(`• ${name}: ${total}`, 25, y);
+        y += 6;
+      });
+
       return doc;
     }
-    function downloadHistoryPDF(id) { const o = orderHistory.find(x => x.id === id); if (o) generatePDF(o.orderData).then(d => d.save('Pedido.pdf')); }
+
+    function downloadHistoryPDF(id) {
+      const order = orderHistory.find(o => o.id === id);
+      if (order) {
+        generatePDF(order.orderData).then(doc => {
+          doc.save(`Pedido_${id}.pdf`);
+        });
+      }
+    }
+
+    // ========== ADMIN ==========
     function enterAdminMode() {
       isAdmin = true;
       document.getElementById('client-view').classList.add('hidden');
@@ -290,15 +539,18 @@
       document.getElementById('admin-password').value = '';
       document.getElementById('login-error').classList.add('hidden');
     }
+
     function exitAdminMode() {
       isAdmin = false;
       document.getElementById('client-view').classList.remove('hidden');
       document.getElementById('admin-view').classList.add('hidden');
       document.getElementById('admin-btn').textContent = 'Modo Admin';
     }
+
     function doLogin() {
       const pass = (document.getElementById('admin-password').value || '').trim();
       const correct = (settings.adminPassword || 'admin123').trim();
+      console.log('Intento login:', pass, 'vs', correct);
       if (pass === correct) {
         document.getElementById('admin-login').classList.add('hidden');
         document.getElementById('admin-panel').classList.remove('hidden');
@@ -309,95 +561,183 @@
         document.getElementById('admin-password').value = '';
       }
     }
+
     function loadAdmin() {
-      document.getElementById('whatsapp-number').value = settings.whatsappNumber || '';
+      const wa = document.getElementById('whatsapp-number');
+      if (wa) wa.value = settings.whatsappNumber || '';
       renderArticlesList();
     }
+
     function renderArticlesList() {
-      const c = document.getElementById('articles-list');
-      if (!c) return;
-      c.innerHTML = articles.map(art => `<div class="border p-4 rounded-lg"><div class="flex justify-between"><div><strong>${art.name}</strong><div class="text-sm text-gray-600">${art.subarticles.map(s=>s.name).join(', ')}</div></div><div><button onclick="editArticle(${art.id})" class="text-blue-600 mr-2">Editar</button><button onclick="deleteArticle(${art.id})" class="text-red-600">Eliminar</button></div></div></div>`).join('');
+      const container = document.getElementById('articles-list');
+      if (!container) return;
+      if (articles.length === 0) {
+        container.innerHTML = '<p class="text-gray-500">No hay artículos. Agregá el primero.</p>';
+        return;
+      }
+      container.innerHTML = articles.map(art => `
+        <div class="border p-4 rounded-lg">
+          <div class="flex justify-between items-start">
+            <div>
+              <strong class="text-lg">${art.name}</strong>
+              <div class="text-sm text-gray-600 mt-1">
+                ${art.subarticles.map(s => s.name).join(', ') || 'Sin aromas'}
+              </div>
+            </div>
+            <div class="space-x-3">
+              <button onclick="editArticle(${art.id})" class="text-blue-600 font-medium">Editar</button>
+              <button onclick="deleteArticle(${art.id})" class="text-red-600 font-medium">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
     }
+
     function saveSettings() {
       settings.whatsappNumber = document.getElementById('whatsapp-number').value.trim();
-      const np = document.getElementById('new-password').value.trim();
-      if (np) settings.adminPassword = np;
+      const newPass = document.getElementById('new-password').value.trim();
+      if (newPass) settings.adminPassword = newPass;
       localStorage.setItem('settings', JSON.stringify(settings));
-      alert('Guardado');
+      alert('Configuración guardada');
       document.getElementById('new-password').value = '';
     }
+
     function showAddArticle() {
-      editingId = null; tempSubarticles = [];
+      editingId = null;
+      tempSubarticles = [];
       document.getElementById('modal-title').textContent = 'Nuevo Artículo';
       document.getElementById('article-name').value = '';
       renderTempSubs();
       document.getElementById('article-modal').classList.remove('hidden');
       document.getElementById('article-modal').classList.add('flex');
     }
+
     function editArticle(id) {
       const art = articles.find(a => a.id === id);
       if (!art) return;
       editingId = id;
       tempSubarticles = JSON.parse(JSON.stringify(art.subarticles));
-      document.getElementById('modal-title').textContent = 'Editar';
+      document.getElementById('modal-title').textContent = 'Editar Artículo';
       document.getElementById('article-name').value = art.name;
       renderTempSubs();
       document.getElementById('article-modal').classList.remove('hidden');
       document.getElementById('article-modal').classList.add('flex');
     }
+
     function renderTempSubs() {
-      document.getElementById('subarticles-list').innerHTML = tempSubarticles.map((s,i) => `<div class="flex justify-between bg-gray-50 p-2 rounded"><span>${s.name}</span><button onclick="removeTempSub(${i})" class="text-red-500">x</button></div>`).join('');
+      const container = document.getElementById('subarticles-list');
+      container.innerHTML = tempSubarticles.map((sub, idx) => `
+        <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+          <span>${sub.name}</span>
+          <button onclick="removeTempSub(${idx})" class="text-red-500 font-bold">✕</button>
+        </div>
+      `).join('');
     }
+
     function addSubarticleTemp() {
-      const n = document.getElementById('new-sub-name').value.trim();
-      if (n) { tempSubarticles.push({id: Date.now()+Math.random(), name: n}); document.getElementById('new-sub-name').value = ''; renderTempSubs(); }
+      const name = document.getElementById('new-sub-name').value.trim();
+      if (name) {
+        tempSubarticles.push({ id: Date.now() + Math.random(), name });
+        document.getElementById('new-sub-name').value = '';
+        renderTempSubs();
+      }
     }
-    function removeTempSub(i) { tempSubarticles.splice(i,1); renderTempSubs(); }
+
+    function removeTempSub(idx) {
+      tempSubarticles.splice(idx, 1);
+      renderTempSubs();
+    }
+
     function saveArticle() {
       const name = document.getElementById('article-name').value.trim();
-      if (!name) { alert('Nombre requerido'); return; }
-      if (editingId) { const a = articles.find(x => x.id === editingId); a.name = name; a.subarticles = tempSubarticles; }
-      else articles.push({id: Date.now(), name, subarticles: tempSubarticles});
-      saveArticles(); closeModal(); renderArticlesList(); renderArticles();
+      if (!name) { alert('El nombre del artículo es obligatorio'); return; }
+
+      if (editingId) {
+        const art = articles.find(a => a.id === editingId);
+        art.name = name;
+        art.subarticles = tempSubarticles;
+      } else {
+        articles.push({
+          id: Date.now(),
+          name,
+          subarticles: tempSubarticles
+        });
+      }
+      saveArticles();
+      closeModal();
+      renderArticlesList();
+      renderArticles();
     }
+
     function deleteArticle(id) {
-      if (confirm('Eliminar?')) { articles = articles.filter(a => a.id !== id); saveArticles(); renderArticlesList(); renderArticles(); }
+      if (confirm('¿Eliminar este artículo y todos sus aromas?')) {
+        articles = articles.filter(a => a.id !== id);
+        saveArticles();
+        renderArticlesList();
+        renderArticles();
+      }
     }
-    function closeModal() { document.getElementById('article-modal').classList.add('hidden'); document.getElementById('article-modal').classList.remove('flex'); }
+
+    function closeModal() {
+      document.getElementById('article-modal').classList.add('hidden');
+      document.getElementById('article-modal').classList.remove('flex');
+    }
+
     function exportData() {
-      const data = {articles, settings};
-      const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
-      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'articulos.json'; a.click();
+      const data = { articles, settings: { whatsappNumber: settings.whatsappNumber, adminPassword: settings.adminPassword } };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'articulos_pedidos.json';
+      a.click();
     }
+
     function importData(file) {
       if (!file) return;
-      const r = new FileReader();
-      r.onload = e => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
         try {
-          const d = JSON.parse(e.target.result);
-          if (d.articles) articles = d.articles;
-          if (d.settings) settings = {...settings, ...d.settings};
-          saveArticles(); localStorage.setItem('settings', JSON.stringify(settings));
-          alert('Importado');
+          const data = JSON.parse(e.target.result);
+          if (data.articles) articles = data.articles;
+          if (data.settings) settings = { ...settings, ...data.settings };
+          saveArticles();
+          localStorage.setItem('settings', JSON.stringify(settings));
+          alert('Artículos importados correctamente');
           if (isAdmin) loadAdmin();
           renderArticles();
           showTab('pedido');
-        } catch { alert('JSON inválido'); }
+        } catch (err) {
+          alert('Error al importar el archivo. Verificá que sea un JSON válido.');
+        }
       };
-      r.readAsText(file);
+      reader.readAsText(file);
     }
-    document.getElementById('admin-btn').addEventListener('click', () => isAdmin ? exitAdminMode() : enterAdminMode());
+
+    // ========== EVENT LISTENERS ==========
+    document.getElementById('admin-btn').addEventListener('click', () => {
+      if (isAdmin) exitAdminMode();
+      else enterAdminMode();
+    });
+
     document.getElementById('btn-login').addEventListener('click', doLogin);
-    document.getElementById('admin-password').addEventListener('keypress', e => { if (e.key === 'Enter') doLogin(); });
+    document.getElementById('admin-password').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') doLogin();
+    });
+
     document.getElementById('btn-exit-admin').addEventListener('click', exitAdminMode);
+
     document.getElementById('btn-save-settings').addEventListener('click', saveSettings);
     document.getElementById('btn-new-article').addEventListener('click', showAddArticle);
     document.getElementById('btn-export').addEventListener('click', exportData);
+
     document.getElementById('btn-add-sub').addEventListener('click', addSubarticleTemp);
     document.getElementById('btn-cancel-modal').addEventListener('click', closeModal);
     document.getElementById('btn-save-article').addEventListener('click', saveArticle);
-    document.getElementById('import-file').addEventListener('change', e => importData(e.target.files[0]));
-    document.getElementById('client-form').addEventListener('submit', e => {
+
+    document.getElementById('import-file').addEventListener('change', (e) => importData(e.target.files[0]));
+    document.getElementById('admin-import').addEventListener('change', (e) => importData(e.target.files[0]));
+
+    document.getElementById('client-form').addEventListener('submit', (e) => {
       e.preventDefault();
       clientData = {
         razonSocial: document.getElementById('razonSocial').value.trim(),
@@ -409,23 +749,44 @@
         iva: document.getElementById('iva').value,
         transporte: document.getElementById('transporte').value.trim()
       };
-      localStorage.setItem('clientData', JSON.stringify(clientData));
-      alert('Datos guardados');
+      saveClient();
+      alert('Datos guardados correctamente');
       updateOrderView();
       showTab('pedido');
     });
+
     document.getElementById('btn-send').addEventListener('click', generateAndSend);
-    ['pedido','datos','historial','importar'].forEach(t => document.getElementById('tab-'+t).addEventListener('click', () => showTab(t)));
-    document.addEventListener('click', e => {
+
+    // Tabs
+    ['pedido','datos','historial','importar'].forEach(tab => {
+      document.getElementById(`tab-${tab}`).addEventListener('click', () => showTab(tab));
+    });
+
+    // Qty buttons (delegated)
+    document.addEventListener('click', (e) => {
       if (e.target.classList.contains('btn-qty')) {
-        const art = e.target.dataset.art; const sub = e.target.dataset.sub; const d = parseInt(e.target.dataset.delta);
-        const inp = document.querySelector(`.qty-field[data-art="${art}"][data-sub="${sub}"]`);
-        if (inp) { let v = parseInt(inp.value)||0; v = Math.max(0, v+d); inp.value = v; setQty(art, sub, v); }
+        const artId = e.target.dataset.art;
+        const subId = e.target.dataset.sub;
+        const delta = parseInt(e.target.dataset.delta);
+        const input = document.querySelector(`.qty-field[data-art="${artId}"][data-sub="${subId}"]`);
+        if (input) {
+          let val = parseInt(input.value) || 0;
+          val = Math.max(0, val + delta);
+          input.value = val;
+          setQty(artId, subId, val);
+        }
       }
     });
-    document.addEventListener('change', e => {
-      if (e.target.classList.contains('qty-field')) setQty(e.target.dataset.art, e.target.dataset.sub, e.target.value);
+
+    document.addEventListener('change', (e) => {
+      if (e.target.classList.contains('qty-field')) {
+        const artId = e.target.dataset.art;
+        const subId = e.target.dataset.sub;
+        setQty(artId, subId, e.target.value);
+      }
     });
+
+    // Init
     renderArticles();
   </script>
 </body>
